@@ -1,0 +1,26 @@
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs / temporary files
+*.log
+*.tmp
+*.bak
+
+# Local private media / exported reports
+private-media/
+local-data/
+reports/
+*下载统计报告*.html
+
+# Local servers / tooling
+node_modules/
+.cache/
+dist/

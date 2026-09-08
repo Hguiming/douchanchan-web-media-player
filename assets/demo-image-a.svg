@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1440" viewBox="0 0 1080 1440">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="0.5" stop-color="#ec4899"/>
+      <stop offset="1" stop-color="#fb923c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1440" fill="url(#g)"/>
+  <circle cx="820" cy="330" r="220" fill="#fff" opacity=".13"/>
+  <circle cx="210" cy="1110" r="290" fill="#fff" opacity=".08"/>
+  <text x="70" y="1180" fill="#fffaf0" font-family="sans-serif" font-size="72" font-weight="700">DCC PLAYER</text>
+  <text x="72" y="1265" fill="#fffaf0" opacity=".78" font-family="sans-serif" font-size="34">IMAGE · 01</text>
+</svg>

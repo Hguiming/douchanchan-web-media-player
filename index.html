@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>为抖铲铲编写的网页端仿抖音图文播放器</title>
+  <link rel="stylesheet" href="src/player.css">
+  <style>
+    body { background: #071313; }
+    .demo-shell { width: min(1080px, calc(100% - 40px)); margin: 0 auto; padding: 64px 0; }
+    .demo-eyebrow { margin: 0 0 12px; color: #aaa195; font-size: 12px; font-weight: 700; letter-spacing: .14em; }
+    .demo-shell h1 { margin: 0; color: #fffaf0; font-size: clamp(30px, 5vw, 58px); line-height: 1.05; }
+    .demo-lead { max-width: 760px; margin: 20px 0 36px; color: #d9d1c4; line-height: 1.75; }
+    .demo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .demo-card { border: 1px solid rgba(255,250,240,.14); border-radius: 18px; background: #132626; padding: 22px; color: #fffaf0; }
+    .demo-card h2 { margin: 0 0 8px; font-size: 18px; }
+    .demo-card p { min-height: 48px; margin: 0 0 18px; color: #aaa195; font-size: 14px; line-height: 1.6; }
+    .demo-card button { width: 100%; min-height: 44px; border: 0; border-radius: 11px; background: #fffaf0; color: #0a1a1a; cursor: pointer; font-weight: 800; }
+    .demo-note { margin-top: 28px; color: #7f766c; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <main class="demo-shell">
+    <p class="demo-eyebrow">DCC WEB MEDIA PLAYER · V18 EXTRACTION</p>
+    <h1>为抖铲铲编写的网页端仿抖音图文播放器</h1>
+    <p class="demo-lead">这是从统计报告 v18 中抽离出的独立演示版。播放器保留图片/视频混播、组内/组间方向动画、自动播放、MP3、图片缩放拖拽、全屏、虚化背景、作品信息等交互。</p>
+    <section class="demo-grid" id="demoGrid" aria-label="演示作品组"></section>
+    <p class="demo-note">演示媒体均为本项目生成的占位素材，不包含原统计报告中的真实作品数据。</p>
+  </main>
+
+  <div aria-hidden="true" class="modal" id="mediaModal">
+    <button aria-label="关闭图文查看器" class="close-btn" onclick="DCCPlayer.close()" type="button">×</button>
+    <div class="modal-content" id="mediaContainer"></div>
+  </div>
+
+  <script src="src/demo-data.js"></script>
+  <script src="src/player.js"></script>
+  <script>
+    const grid = document.getElementById('demoGrid');
+    window.DCC_PLAYER_ITEMS.forEach((item, index) => {
+      const card = document.createElement('article');
+      card.className = 'demo-card';
+      const mediaCount = item.filenames.filter(name => /\.(?:jpe?g|png|gif|webp|avif|bmp|svg|mp4|webm|ogv|mov|m4v)$/i.test(name)).length;
+      card.innerHTML = `<h2>第 ${index + 1} 组</h2><p>${item.author} · ${mediaCount} 个媒体</p><button type="button">打开播放器</button>`;
+      card.querySelector('button').addEventListener('click', () => DCCPlayer.open(index));
+      grid.appendChild(card);
+    });
+  </script>
+</body>
+</html>
